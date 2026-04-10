@@ -2,33 +2,6 @@
 
 A hackathon prototype that predicts how disruptions cascade through supply chains using a hierarchical impact tree model.
 
-## Quick Start
-
-### Prerequisites
-- Python 3.10+
-- Node.js 18+
-- npm
-
-### Backend (FastAPI)
-
-```bash
-cd backend
-pip install -r requirements.txt
-cd ..
-python -m uvicorn backend.main:app --reload --port 8000
-```
-
-Backend runs at **http://localhost:8000**
-
-### Frontend (Next.js)
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-Frontend runs at **http://localhost:3000**
 
 ## API Endpoints
 
