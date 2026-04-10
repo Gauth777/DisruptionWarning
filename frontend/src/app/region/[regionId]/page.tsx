@@ -12,12 +12,17 @@ export default function RegionAlertsPage() {
   const regionId = params.regionId as string;
   const [alerts, setAlerts] = useState<Alert[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     api.getRegionAlerts(regionId).then((data) => {
       setAlerts(data);
       setLoading(false);
-    }).catch(() => setLoading(false));
+    }).catch((err) => {
+      console.error("Failed to fetch alerts:", err);
+      setError("Failed to load alerts. Please try again later.");
+      setLoading(false);
+    });
   }, [regionId]);
 
   const regionName = regionId
@@ -69,6 +74,15 @@ export default function RegionAlertsPage() {
       {loading ? (
         <div className="flex items-center justify-center py-20">
           <div className="w-8 h-8 border-2 border-accent-cyan/30 border-t-accent-cyan rounded-full animate-spin" />
+        </div>
+      ) : error ? (
+        <div className="glass rounded-xl p-6 text-center">
+          <p className="text-severity-critical font-semibold mb-2">Error Loading Alerts</p>
+          <p className="text-text-secondary text-sm">{error}</p>
+        </div>
+      ) : alerts.length === 0 ? (
+        <div className="glass rounded-xl p-6 text-center">
+          <p className="text-text-secondary">No active alerts for this region.</p>
         </div>
       ) : (
         <div className="flex flex-col gap-4">
