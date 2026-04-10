@@ -6,7 +6,7 @@ Future: ranks interventions using optimization models considering
 cost, feasibility, delay reduction, and cross-region impact.
 """
 
-from backend.data.mock_data import INTERVENTIONS
+from data.mock_data import INTERVENTIONS
 
 
 def get_interventions(alert_id: str) -> list:

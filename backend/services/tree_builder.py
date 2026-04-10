@@ -6,8 +6,8 @@ Future: dynamically builds trees using ML model outputs from
 strike_model.py / weather_model.py + tree_scoring.py.
 """
 
-from backend.data.mock_data import IMPACT_TREES
-from backend.ml.tree_scoring import flatten_tree, get_propagation_depth, count_nodes
+from data.mock_data import IMPACT_TREES
+from ml.tree_scoring import flatten_tree, get_propagation_depth, count_nodes
 
 
 def get_impact_tree(alert_id: str) -> dict | None:

@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from backend.routers import regions, alerts
+from routers import regions, alerts
 
 app = FastAPI(
     title="Early Warning Supply Chain Predictor",

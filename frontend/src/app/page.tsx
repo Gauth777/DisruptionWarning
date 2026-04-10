@@ -8,12 +8,17 @@ import RegionCard from "@/components/RegionCard";
 export default function HomePage() {
   const [regions, setRegions] = useState<Region[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     api.getRegions().then((data) => {
       setRegions(data);
       setLoading(false);
-    }).catch(() => setLoading(false));
+    }).catch((err) => {
+      console.error("Failed to fetch regions:", err);
+      setError("Failed to load regions. Please try again later.");
+      setLoading(false);
+    });
   }, []);
 
   return (
@@ -69,6 +74,15 @@ export default function HomePage() {
       {loading ? (
         <div className="flex items-center justify-center py-20">
           <div className="w-8 h-8 border-2 border-accent-cyan/30 border-t-accent-cyan rounded-full animate-spin" />
+        </div>
+      ) : error ? (
+        <div className="glass rounded-xl p-6 text-center">
+          <p className="text-severity-critical font-semibold mb-2">Error Loading Regions</p>
+          <p className="text-text-secondary text-sm">{error}</p>
+        </div>
+      ) : regions.length === 0 ? (
+        <div className="glass rounded-xl p-6 text-center">
+          <p className="text-text-secondary">No regions available.</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

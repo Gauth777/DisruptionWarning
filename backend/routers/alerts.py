@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
-from backend.services.alert_service import get_alert_by_id, get_alert_kpis
-from backend.services.tree_builder import get_impact_tree, get_tree_flat_nodes, get_tree_stats
-from backend.services.intervention_ranker import get_interventions
+from services.alert_service import get_alert_by_id, get_alert_kpis
+from services.tree_builder import get_impact_tree, get_tree_flat_nodes, get_tree_stats
+from services.intervention_ranker import get_interventions
 
 router = APIRouter(prefix="/api/alerts", tags=["alerts"])
 

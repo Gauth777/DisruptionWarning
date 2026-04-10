@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from backend.services.alert_service import get_all_regions, get_region_by_id, get_alerts_by_region
+from services.alert_service import get_all_regions, get_region_by_id, get_alerts_by_region
 
 router = APIRouter(prefix="/api/regions", tags=["regions"])
 

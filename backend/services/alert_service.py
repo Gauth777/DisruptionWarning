@@ -5,7 +5,7 @@ Currently reads from mock data.
 Future: queries DB + calls ML models for real-time severity scoring.
 """
 
-from backend.data.mock_data import REGIONS, ALERTS, ALERT_DETAILS_KPIS
+from data.mock_data import REGIONS, ALERTS, ALERT_DETAILS_KPIS
 
 
 def get_all_regions() -> list:
